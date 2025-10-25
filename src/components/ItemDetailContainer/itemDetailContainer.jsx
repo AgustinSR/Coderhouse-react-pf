@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../services/firebaseConfig";
-import { doc, getDoc } from "firebase/firestore";
 import ItemDetail from "../ItemDetail/itemDetail";
 
 function ItemDetailContainer() {
@@ -10,26 +10,35 @@ function ItemDetailContainer() {
   const { id } = useParams();
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const docRef = doc(db, "products", id);
-        const docSnap = await getDoc(docRef);
+    setLoading(true);
 
-        if (docSnap.exists()) {
-          setProduct({ id: docSnap.id, ...docSnap.data() });
+    const docRef = doc(db, "products", id);
+
+    getDoc(docRef)
+      .then((res) => {
+        if (res.exists()) {
+          setProduct({ id: res.id, ...res.data() });
+        } else {
+          console.warn("Producto no encontrado");
         }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProduct();
+      })
+      .catch((err) => console.error("Error al obtener producto:", err))
+      .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <p>Cargando detalle...</p>;
+  if (loading) {
+    return <h2 style={{ textAlign: "center" }}>Cargando producto...</h2>;
+  }
 
-  return product ? <ItemDetail product={product} /> : <p>Producto no encontrado</p>;
+  if (!product) {
+    return <h2 style={{ textAlign: "center" }}>Producto no encontrado</h2>;
+  }
+
+  return (
+    <div className="container">
+      <ItemDetail product={product} />
+    </div>
+  );
 }
 
 export default ItemDetailContainer;

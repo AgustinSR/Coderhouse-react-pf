@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Cart() {
   const { cart, precioTotal, limpiarCart } = useContext(CartContext);
 
-  if (cart.length === 0) {
+  if (cart.length === 0) 
     return (
       <div>
         <h2>Tu carrito está vacío</h2>
@@ -27,6 +27,6 @@ function Cart() {
       </div>
     );
   }
-}
+
 
 export default Cart;

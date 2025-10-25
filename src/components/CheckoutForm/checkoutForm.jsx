@@ -5,7 +5,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 function CheckoutForm() {
   const { cart, precioTotal, limpiarCart } = useContext(CartContext);
-  const [buyer, setBuyer] = useState({ name: "", email: "", phone: "" });
+const [buyer, setBuyer] = useState({ name: "", email: "", phone: "" });
   const [orderId, setOrderId] = useState(null);
 
   const handleChange = (e) => {
@@ -23,7 +23,7 @@ function CheckoutForm() {
     };
 
     try {
-      const docRef = await addDoc(collection(db, "ordenes"), ordenes);
+      const docRef = await addDoc(collection(db, "ordenes"), order);
       setOrderId(docRef.id);
       limpiarCart();
     } catch (error) {
@@ -31,11 +31,11 @@ function CheckoutForm() {
     }
   };
 
-  if (ordenesId) {
+  if (orderId) {
     return (
       <div>
-        <h2>Gracias por tu compra</h2>
-        <p>Tu numero de orden es: {ordenesId}</p>
+        <h2>Gracias por tu compra!</h2>
+        <p>Tu número de orden es: {orderId}</p>
       </div>
     );
   }

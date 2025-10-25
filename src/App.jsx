@@ -16,11 +16,11 @@ function App() {
         <NavBar />
         <Routes>
           
-          <Route path="/" element={<ItemListContainer />} />
-          <Route path="/category/:categoryId" element={<ItemListContainer />} />
-          <Route path="/detail/:id" element={<ItemDetailContainer />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<CheckoutForm />} />
+          <Route path="/" element={<ItemListContainer />}/>
+          <Route path="category/:categoryId" element={<ItemListContainer/>}/>
+          <Route path="/detail/:id" element={<ItemDetailContainer/>} />
+          <Route path="/cart" element={<Cart/>}/>
+          <Route path="/checkoutForm" element={<CheckoutForm />}/>
         </Routes>
       </Router>
     </CartContextProvider>

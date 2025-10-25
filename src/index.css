@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  background-color: #e9ecef;
+  color: #222;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+:root {
+  --primary: #111;
+  --secondary: #ff4444;
+  --gray-light: #f1f1f1;
+  --gray: #ccc;
+  --gray-dark: #555;
+  --radius: 8px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+nav {
+  background-color: var(--primary);
+  padding: 15px 0;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+}
+
+nav a {
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--secondary);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: var(--radius);
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.product-card h3 {
+  margin: 10px 0 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.product-card p {
+  margin-bottom: 10px;
+  color: var(--gray-dark);
+}
+
+.price {
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--secondary);
+}
+
+.btn {
+  background-color: var(--secondary);
+  border: none;
+  padding: 10px 14px;
+  color: white;
+  cursor: pointer;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: #e43131;
+}
+
+.btn-cart {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--primary);
+}
+
+.btn-cart:hover {
+  background-color: #333;
+}
+
+footer {
+  background-color: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+}
